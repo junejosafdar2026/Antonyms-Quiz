@@ -75,4 +75,15 @@ body {
     background: rgba(255,255,255,0.1); color: white; border: none;
     padding: 10px 20px; border-radius: 50px; cursor: pointer;
 }
+/* Add this to your style.css */
+.sentence-box {
+    background: rgba(59, 130, 246, 0.1); /* Light Blue Tint */
+    border-left: 4px solid var(--primary);
+    padding: 15px;
+    font-style: italic;
+    color: #e2e8f0;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+}
 
