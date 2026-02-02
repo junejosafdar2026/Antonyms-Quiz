@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonyms Test - SALA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="sala-header">
+        <h1>Shah Abdul Latif Academy <span class="brand-tag">SALA</span></h1>
+        <p class="author">By Safdar Junejo</p>
+        
+        <a href="https://whatsapp.com/channel/0029Vb5tZoH0lwgxaM1Jmr2h" target="_blank" class="whatsapp-btn">
+            <i class="fa-brands fa-whatsapp"></i> Join WhatsApp Channel
+        </a>
+    </header>
+
+    <div class="container">
+        
+        <div class="intro-card">
+            <h2>IBA English Preparation</h2>
+            <p><strong>Topic: Antonyms (Contextual).</strong><br>Read the sentence and choose the word <strong>OPPOSITE</strong> in meaning to the capitalized word.</p>
+        </div>
+
+        <div id="quiz-container">
+            </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="window.history.back()" class="back-btn">← Back to Main Menu</button>
+        </div>
+
+    </div>
+
+    <script>
+        // DATABASE OF 30 ANTONYMS WITH SENTENCES
+        const questions = [
+            { 
+                sentence: "The manager’s PRAGMATIC approach to the problem saved the company time, unlike previous theoretical ideas.",
+                q: "What is the ANTONYM of PRAGMATIC?", 
+                options: ["A. Idealistic", "B. Practical", "C. Efficient", "D. Realistic"], 
+                ans: "A. Idealistic" 
+            },
+            { 
+                sentence: "The politician gave a CANDID interview, admitting his past mistakes without hesitation.",
+                q: "What is the ANTONYM of CANDID?", 
+                options: ["A. Frank", "B. Secretive", "C. Honest", "D. Open"], 
+                ans: "B. Secretive" 
+            },
+            { 
+                sentence: "Due to heavy rain, the cricket match was ABBREVIATED to just ten overs.",
+                q: "What is the ANTONYM of ABBREVIATED?", 
+                options: ["A. Shortened", "B. Extended", "C. Cut", "D. Limited"], 
+                ans: "B. Extended" 
+            },
+            { 
+                sentence: "The witness’s testimony was INCOHERENT; she was sobbing so hard no one could understand.",
+                q: "What is the ANTONYM of INCOHERENT?", 
+                options: ["A. Confused", "B. Unintelligible", "C. Logical", "D. Muddled"], 
+                ans: "C. Logical" 
+            },
+            { 
+                sentence: "The teacher tried to ELICIT the answer, but the student remained silent.",
+                q: "What is the ANTONYM of ELICIT?", 
+                options: ["A. Extract", "B. Hide", "C. Draw out", "D. Reveal"], 
+                ans: "B. Hide" 
+            },
+            { 
+                sentence: "His AMIABLE nature made him very popular; everyone liked working with him.",
+                q: "What is the ANTONYM of AMIABLE?", 
+                options: ["A. Friendly", "B. Hostile", "C. Kind", "D. Pleasant"], 
+                ans: "B. Hostile" 
+            },
+            { 
+                sentence: "The fortress proved to be IMPREGNABLE, resisting every attack.",
+                q: "What is the ANTONYM of IMPREGNABLE?", 
+                options: ["A. Strong", "B. Vulnerable", "C. Secure", "D. Invincible"], 
+                ans: "B. Vulnerable" 
+            },
+            { 
+                sentence: "The scientist’s explanation was LUCID, allowing even children to understand.",
+                q: "What is the ANTONYM of LUCID?", 
+                options: ["A. Clear", "B. Confusing", "C. Simple", "D. Bright"], 
+                ans: "B. Confusing" 
+            },
+            { 
+                sentence: "The noise began to AGGRAVATE his severe headache.",
+                q: "What is the ANTONYM of AGGRAVATE?", 
+                options: ["A. Worsen", "B. Irritate", "C. Soothe", "D. Annoy"], 
+                ans: "C. Soothe" 
+            },
+            { 
+                sentence: "She is a METICULOUS planner, checking every tiny detail.",
+                q: "What is the ANTONYM of METICULOUS?", 
+                options: ["A. Thorough", "B. Careless", "C. Detailed", "D. Precise"], 
+                ans: "B. Careless" 
+            },
+            { 
+                sentence: "The jury found the evidence COMPELLING and convicted the suspect.",
+                q: "What is the ANTONYM of COMPELLING?", 
+                options: ["A. Convincing", "B. Weak", "C. Strong", "D. Powerful"], 
+                ans: "B. Weak" 
+            },
+            { 
+                sentence: "The brothers have been ESTRANGED for years and have not spoken.",
+                q: "What is the ANTONYM of ESTRANGED?", 
+                options: ["A. Alienated", "B. Separated", "C. United", "D. Distant"], 
+                ans: "C. United" 
+            },
+            { 
+                sentence: "The medicine has a POTENT effect, eliminating the virus quickly.",
+                q: "What is the ANTONYM of POTENT?", 
+                options: ["A. Powerful", "B. Weak", "C. Strong", "D. Effective"], 
+                ans: "B. Weak" 
+            },
+            { 
+                sentence: "The old policy was deemed OBSOLETE in the digital age.",
+                q: "What is the ANTONYM of OBSOLETE?", 
+                options: ["A. Outdated", "B. Modern", "C. Ancient", "D. Old"], 
+                ans: "B. Modern" 
+            },
+            { 
+                sentence: "He tried to MITIGATE the damage by offering an apology.",
+                q: "What is the ANTONYM of MITIGATE?", 
+                options: ["A. Reduce", "B. Ease", "C. Aggravate", "D. Lessen"], 
+                ans: "C. Aggravate" 
+            },
+            { 
+                sentence: "The student’s DILIGENT efforts resulted in the highest grades.",
+                q: "What is the ANTONYM of DILIGENT?", 
+                options: ["A. Hardworking", "B. Lazy", "C. Studious", "D. Active"], 
+                ans: "B. Lazy" 
+            },
+            { 
+                sentence: "The CEO remained STOIC despite the bad news, showing no emotion.",
+                q: "What is the ANTONYM of STOIC?", 
+                options: ["A. Calm", "B. Emotional", "C. Indifferent", "D. Patient"], 
+                ans: "B. Emotional" 
+            },
+            { 
+                sentence: "The AMBIGUOUS instructions confused the students.",
+                q: "What is the ANTONYM of AMBIGUOUS?", 
+                options: ["A. Vague", "B. Unclear", "C. Clear", "D. Doubtful"], 
+                ans: "C. Clear" 
+            },
+            { 
+                sentence: "Her RESILIENT spirit allowed her to bounce back quickly.",
+                q: "What is the ANTONYM of RESILIENT?", 
+                options: ["A. Tough", "B. Fragile", "C. Strong", "D. Flexible"], 
+                ans: "B. Fragile" 
+            },
+            { 
+                sentence: "The judge was IMPARTIAL, treating rich and poor exactly the same.",
+                q: "What is the ANTONYM of IMPARTIAL?", 
+                options: ["A. Fair", "B. Biased", "C. Neutral", "D. Just"], 
+                ans: "B. Biased" 
+            },
+            { 
+                sentence: "Constant criticism began to UNDERMINE his confidence.",
+                q: "What is the ANTONYM of UNDERMINE?", 
+                options: ["A. Weaken", "B. Strengthen", "C. Sabotage", "D. Hurt"], 
+                ans: "B. Strengthen" 
+            },
+            { 
+                sentence: "We must CONSERVE our natural resources for future generations.",
+                q: "What is the ANTONYM of CONSERVE?", 
+                options: ["A. Save", "B. Protect", "C. Waste", "D. Keep"], 
+                ans: "C. Waste" 
+            },
+            { 
+                sentence: "The TURBULENT weather caused a bumpy flight.",
+                q: "What is the ANTONYM of TURBULENT?", 
+                options: ["A. Chaotic", "B. Calm", "C. Rough", "D. Stormy"], 
+                ans: "B. Calm" 
+            },
+            { 
+                sentence: "His explanation was PLAUSIBLE, but I still had doubts.",
+                q: "What is the ANTONYM of PLAUSIBLE?", 
+                options: ["A. Believable", "B. Unbelievable", "C. Reasonable", "D. Likely"], 
+                ans: "B. Unbelievable" 
+            },
+            { 
+                sentence: "The goal is to ERADICATE poverty from the region.",
+                q: "What is the ANTONYM of ERADICATE?", 
+                options: ["A. Destroy", "B. Create", "C. Remove", "D. Eliminate"], 
+                ans: "B. Create" 
+            },
+            { 
+                sentence: "The view from the mountain was SPECTACULAR.",
+                q: "What is the ANTONYM of SPECTACULAR?", 
+                options: ["A. Amazing", "B. Ordinary", "C. Stunning", "D. Wonderful"], 
+                ans: "B. Ordinary" 
+            },
+            { 
+                sentence: "He has a PROPENSITY for lying.",
+                q: "What is the ANTONYM of PROPENSITY?", 
+                options: ["A. Tendency", "B. Disinclination", "C. Habit", "D. Lean"], 
+                ans: "B. Disinclination" 
+            },
+            { 
+                sentence: "The contract was NULLIFIED after the forgery was discovered.",
+                q: "What is the ANTONYM of NULLIFIED?", 
+                options: ["A. Cancelled", "B. Validated", "C. Voided", "D. Negated"], 
+                ans: "B. Validated" 
+            },
+            { 
+                sentence: "The ARDUOUS journey exhausted the hikers.",
+                q: "What is the ANTONYM of ARDUOUS?", 
+                options: ["A. Difficult", "B. Easy", "C. Hard", "D. Tough"], 
+                ans: "B. Easy" 
+            },
+            { 
+                sentence: "The artist’s style is quite ECCENTRIC and strange.",
+                q: "What is the ANTONYM of ECCENTRIC?", 
+                options: ["A. Odd", "B. Conventional", "C. Weird", "D. Unique"], 
+                ans: "B. Conventional" 
+            }
+        ];
+
+        // RENDER QUESTIONS
+        const container = document.getElementById('quiz-container');
+
+        questions.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'mcq-card';
+            card.innerHTML = `
+                <div class="sentence-box">"${item.sentence}"</div>
+                <div class="q-text">${index + 1}. ${item.q}</div>
+                <ul class="opt-list">
+                    ${item.options.map(opt => `<li>${opt}</li>`).join('')}
+                </ul>
+                <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer</button>
+                <div class="ans-box">Correct Answer: <strong>${item.ans}</strong></div>
+            `;
+            container.appendChild(card);
+        });
+
+        function toggleAns(btn) {
+            const box = btn.nextElementSibling;
+            if(box.style.display === 'block') {
+                box.style.display = 'none';
+                btn.innerText = "Show Answer";
+                btn.classList.remove('active-btn');
+            } else {
+                box.style.display = 'block';
+                btn.innerText = "Hide Answer";
+                btn.classList.add('active-btn');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
